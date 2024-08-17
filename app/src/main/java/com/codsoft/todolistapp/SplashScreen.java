@@ -32,7 +32,7 @@ public class SplashScreen extends AppCompatActivity {
         logo2 = findViewById(R.id.textView2);
 
 //Animation defined in java file res<anim<top and bottom animation
-//For Quiz image top to bottom and for text bottom to up =Animation
+
         top_anim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
         bottom_anim = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
 
