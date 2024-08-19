@@ -134,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:textStyle="bold"
-        android:text="Already Account? Login Here..."
+        android:text="Already Have An Account? Login Here..."
         android:textColor="#FFEB3B"
         android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"

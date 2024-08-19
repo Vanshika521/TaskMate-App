@@ -80,7 +80,7 @@
 
 
     <Button
-        android:id="@+id/registerBtn"
+        android:id="@+id/loginBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -96,7 +96,7 @@
         />
 
     <TextView
-        android:id="@+id/loginBtn"
+        android:id="@+id/registerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -106,7 +106,7 @@
         android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/registerBtn"
+        app:layout_constraintTop_toBottomOf="@id/loginBtn"
         />
 
     <ProgressBar
