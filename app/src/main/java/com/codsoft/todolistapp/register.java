@@ -101,6 +101,8 @@ public class register extends AppCompatActivity {
 
                 if (!password.equals(cpassword)) {
                     pwd.setError("Password And Confirm Password Must be SAME!!!");
+                    return;
+
                 }
 
                 pbar.setVisibility(View.VISIBLE);
@@ -132,8 +134,6 @@ public class register extends AppCompatActivity {
                         }
                     }
                 });
-
-
 
             }
         });
