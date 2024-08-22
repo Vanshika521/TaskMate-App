@@ -15,7 +15,7 @@
         android:layout_height="100dp"
         android:layout_marginVertical="55dp"
         android:background="@drawable/design"
-        android:src="@drawable/img"
+        android:src="@drawable/second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

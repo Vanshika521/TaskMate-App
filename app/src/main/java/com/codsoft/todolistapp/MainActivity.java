@@ -50,8 +50,24 @@ public class MainActivity extends AppCompatActivity {
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logOut();
+               // logOut();
+                PopupMenu popupmenu  = new PopupMenu(MainActivity.this,menuBtn);
+                popupmenu.getMenu().add("Logout");
+                popupmenu.show();
+                popupmenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        if (menuItem.getTitle() == "Logout") {
+                            FirebaseAuth.getInstance().signOut();
+                            Intent intent = new Intent(MainActivity.this, login.class);
+                            startActivity(intent);
+                            finish();
+                            return true;
+                        }
+                        return false;
                     }
+                });
+            }
         });
         setupRecyclerView();
     }
@@ -83,24 +99,5 @@ public class MainActivity extends AppCompatActivity {
         Adapter.notifyDataSetChanged();
     }
 
-     void logOut(){
-        PopupMenu popupmenu  = new PopupMenu(MainActivity.this,menuBtn);
-        popupmenu.getMenu().add("Logout");
-        popupmenu.show();
-        popupmenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                if (menuItem.getTitle() == "Logout") {
-                    FirebaseAuth.getInstance().signOut();
-                    Intent intent = new Intent(MainActivity.this, login.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                return false;
-            }
-        });
-
-    }
 
 }
