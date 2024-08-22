@@ -4,6 +4,7 @@ package com.codsoft.todolistapp;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 //import android.view.ViewGroup;
@@ -32,6 +33,19 @@ public class adapter extends FirestoreRecyclerAdapter<note,adapter.NoteViewHolde
         holder.contentView.setText(model.content);
         holder.timestampView.setText(utility.timestampToString(model.timestamp));
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int currentPosition = holder.getBindingAdapterPosition();
+                Intent intent = new Intent(context,Notes_Details.class);
+                intent.putExtra("title",model.title);
+                intent.putExtra("content",model.content);
+                String docId = getSnapshots().getSnapshot(currentPosition).getId();
+                intent.putExtra("docId", docId);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -41,8 +55,6 @@ public class adapter extends FirestoreRecyclerAdapter<note,adapter.NoteViewHolde
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_items,parent,false);
         return new NoteViewHolder(view);
     }
-
-
 
     class NoteViewHolder extends RecyclerView.ViewHolder{
 

@@ -3,8 +3,10 @@ package com.codsoft.todolistapp;
 import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.Query;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,11 +50,12 @@ public class MainActivity extends AppCompatActivity {
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-            }
+                logOut();
+                    }
         });
         setupRecyclerView();
     }
+
     void setupRecyclerView() {
         Query query = utility.getCollectionReference().orderBy("timestamp", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<note> options = new FirestoreRecyclerOptions.Builder<note>().setQuery(query, note.class).build();
@@ -77,6 +81,26 @@ public class MainActivity extends AppCompatActivity {
     {
         super.onResume();
         Adapter.notifyDataSetChanged();
+    }
+
+     void logOut(){
+        PopupMenu popupmenu  = new PopupMenu(MainActivity.this,menuBtn);
+        popupmenu.getMenu().add("Logout");
+        popupmenu.show();
+        popupmenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                if (menuItem.getTitle() == "Logout") {
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(MainActivity.this, login.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 
 }
