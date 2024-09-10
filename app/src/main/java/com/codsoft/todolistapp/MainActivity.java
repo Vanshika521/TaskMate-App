@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
