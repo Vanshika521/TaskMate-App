@@ -21,7 +21,6 @@ public class Notes_Details extends AppCompatActivity {
     String title1,content1,docId;
     boolean isEditMode = false;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
